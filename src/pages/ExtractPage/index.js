@@ -8,7 +8,7 @@ import ExitSymbol from '../../assets/img/exit_symbol.svg';
 import AddSymbol from '../../assets/img/add_symbol.svg';
 import RemoveSymbol from '../../assets/img/remove_symbol.svg';
 import UserContext from '../../contexts/UserContext';
-
+import api from '../../service/api';
 
 import loading from "../../assets/img/loading.svg"
 
@@ -31,7 +31,6 @@ export default function ExtractPage() {
         setExtract([]);
         setLoading(true);
         handleExtractInfo(token);
-        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     useEffect(handleTotal, [extract])
@@ -62,7 +61,7 @@ export default function ExtractPage() {
     async function handleExtractInfo(auth) {
         setLoading(true)
         try {
-            const promise = await //TODO:
+            const promise = await api.getEntries(auth);
 
             setExtract(promise.data.entries);
             setLoading(false);
@@ -77,7 +76,7 @@ export default function ExtractPage() {
         setLoading(true);
         if (window.confirm('Você realmente gostaria de excluir esse registro?')) {
             try {
-                await //TODO:
+                await api.deleteEntry(id, token);
 
                 await handleExtractInfo(token);
                 setLoading(false);
