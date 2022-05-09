@@ -31,6 +31,7 @@ export default function ExtractPage() {
         setExtract([]);
         setLoading(true);
         handleExtractInfo(token);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     useEffect(handleTotal, [extract])
@@ -95,8 +96,8 @@ export default function ExtractPage() {
             </Header>
             <ExtractContainer>
                 {extract.length === 0 && !isLoading && <span>Não há registros de <br /> entrada ou saída</span>}
-                {extract.length === 0 && isLoading && <span><img src={loading} alt="" /></span>}
-                {extract.length !== 0 && isLoading && <span><img src={loading} alt="" /></span>}
+                {extract.length === 0 && isLoading && <img src={loading} alt="" />}
+                {extract.length !== 0 && isLoading && <img src={loading} alt="" />}
 
                 {extract.length !== 0 && !isLoading &&
                     <>

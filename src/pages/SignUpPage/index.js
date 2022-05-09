@@ -11,7 +11,6 @@ import api from "../../service/api";
 
 import loading from "../../assets/img/loading.svg"
 
-
 export default function SignUpPage() {
     const { isLoading, setLoading } = useContext(UserContext);
 
