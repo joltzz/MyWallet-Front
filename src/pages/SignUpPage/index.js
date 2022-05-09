@@ -7,6 +7,7 @@ import UserContext from '../../contexts/UserContext';
 import Logo from '../../components/Logo';
 import Button from '../../components/generic/Button';
 import Input from '../../components/generic/Input';
+import api from "../../service/api";
 
 import loading from "../../assets/img/loading.svg"
 
@@ -38,13 +39,18 @@ export default function SignUpPage() {
         }
 
         try {
-            //await TODO:
+            await api.signUp({
+                name: formData.name,
+                email: formData.email,
+                password: formData.password,
+            })
 
             setLoading(false);
             navigate('/');
 
         } catch (error) {
             setLoading(false);
+
             setError(true);
             setErrorMessage(error.response.data)
         };

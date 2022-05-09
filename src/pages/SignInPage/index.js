@@ -7,6 +7,7 @@ import UserContext from "../../contexts/UserContext";
 import Logo from '../../components/Logo';
 import Button from '../../components/generic/Button';
 import Input from '../../components/generic/Input';
+import api from "../../service/api";
 
 import loading from "../../assets/img/loading.svg"
 
@@ -27,7 +28,7 @@ export default function SignInPage() {
 
         setLoading(true);
         try {
-            const promise = await //TODO:
+            const promise = await api.signIn({ password: password, email: email })
 
             setLoading(true);
             setError(false);
